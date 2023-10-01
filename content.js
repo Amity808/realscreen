@@ -2,64 +2,95 @@ console.log("Hi, I have been injected");
 
 var recorder = null; 
 var popupElement = null;
-
+let barContainner
 function createPopup() {
-    popupElement = document.createElement("div");
-    popupElement.style.position = "fixed";
-    popupElement.style.top = "10px";
-    popupElement.style.left = "10px";
-    popupElement.style.padding = "10px";
-    popupElement.style.background = "rgba(0, 0, 0, 0.7)";
-    popupElement.style.color = "#fff";
-    popupElement.style.zIndex = "9999";
-    popupElement.style.display = "none";
-    // popupElement.textContent = "Recording started...";
-    const containerDiv = document.createElement("div");
-    containerDiv.className = "border-4 border-solid w-[551px] h-[86px] flex flex-row justify-between px-4 items-center bg-black rounded-full text-white gap-3";
+    barContainner = document.createElement("div");
+barContainner.style.display = "none";
+barContainner.style.gap = "1rem";
+barContainner.style.alignItems = "center";
+barContainner.style.minWidth = "400px";
+barContainner.style.backgroundColor = "#141414";
+barContainner.style.borderRadius = "100vh";
+barContainner.style.paddingBlock = "0.5rem";
+barContainner.style.justifyContent = "space-evenly";
+barContainner.style.position = "fixed";
+barContainner.style.bottom = "5%";
+barContainner.style.left = "5%";
+let time = document.createElement("div");
+let timeP = document.createElement("p");
+let timeSpan = document.createElement("span");
+time.style.display = "flex";
+time.style.alignItems = "center";
+time.style.gap = "1rem";
+timeP.style.fontWeight = "500";
+timeP.style.fontSize = "1.25rem";
+timeP.style.fontFamily = "Inter";
+timeP.style.color = "#fff";
+timeP.textContent = "00:03:35";
+timeSpan.style.height = "8px";
+timeSpan.style.width = "8px";
+timeSpan.style.backgroundColor = "red";
+timeSpan.style.borderRadius = "50%";
+time.appendChild(timeP);
+time.appendChild(timeSpan);
+barContainner.appendChild(time);
+let barPropContainner = document.createElement("div");
+barPropContainner.style.display = "flex";
+barPropContainner.style.alignItems = "center";
+barPropContainner.style.gap = "1rem";
+barPropContainner.style.borderLeft = "1px solid #E8E8E8";
+barPropContainner.style.paddingLeft = "1rem";
+document.body.appendChild(barContainner);
+const controlItem1 = createControlItem("Pause", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166602/Icons/ae3ufl4s59dy7tvh0tsb.png");
+const controlItem2 = createControlItem("Stop", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166664/Icons/gj2gn1upqjimsgv2j8cz.png");
+const controlItem3 = createControlItem("Camera", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166781/Icons/cawunk9gdd9yfnnvlnei.png");
+barPropContainner.appendChild(controlItem1);
+barPropContainner.appendChild(controlItem2);
+barPropContainner.appendChild(controlItem3);
+function createControlItem(labelText, imgUrl) {
+  const controlItem = document.createElement("div");
+  //   controlItem.className = "controlItem";
+  controlItem.style.display = "flex";
+  controlItem.style.alignItems = "center";
+  controlItem.style.gap = ".3rem";
+  //   controlItem.style.paddingLeft = "1rem";
+  controlItem.style.flexDirection = "column";
+  const button = document.createElement("button");
+  button.style.borderRadius = "50%";
+  button.style.display = "grid";
+  button.style.placeContent = "center";
+  button.style.backgroundColor = "#fff";
+  button.style.border = "none";
+  button.style.height = "30px";
+  button.style.width = "30px";
+  const img = document.createElement("img");
+  img.style.height = "15px";
+  img.style.objectFit = "contain";
+  img.src =imgUrl;
 
-    // Add your HTML content inside the container div
-    containerDiv.innerHTML = `
-    <div className=" border-4 border-solid w-[551px] h-[86px] flex flex-row justify-between px-4 items-center bg-black rounded-full text-white  gap-3 " style="border: 4px; border-style: solid; width: 551px; height: 86px; display: flex; justify-content: space-between; align-items: center; background: #000; border-radius: 9999px; color: aliceblue; gap: 12px;">
-        <p className=" text-xl" style="font-size: 20px;">00:03:45</p>
-        <img src={red} alt="red" className=" w-[10px] h-[10px] ml-[16px]" style=" width: 10px; height: 10px; margin-left: 16px;" />
-        <span className=" mr-3 border-r-2 border ml-3 h-[48px]" style="margin-right: 3px; border-right-width: 2px; border: white; margin-left: 12px; height: 48px;"></span>
-        <span style="display: flex; flex-direction: column; justify-content: center; align-items: center;" className=" flex flex-col justify-center items-center ">
-          <img src="https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166664/Icons/gj2gn1upqjimsgv2j8cz.png" alt="" style="width: 24px; height: 24px;" className=" w-[24px] h-[24px]"/>
-          <p>pause</p>
-        </span>
-        <span style="display: flex; flex-direction: column; justify-content: center; align-items: center;" className=" flex flex-col justify-center items-center ">
-          <img src="https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166664/Icons/gj2gn1upqjimsgv2j8cz.png" alt="" style="width: 24px; height: 24px;" className=" w-[24px] h-[24px]"/>
-          <p>Stop</p>
-        </span>
-        <span style="display: flex; flex-direction: column; justify-content: center; align-items: center;" className=" flex flex-col justify-center items-center ">
-          <img src={pcamera} alt="" style="width: 24px; height: 24px;" className=" w-[24px] h-[24px]"/>
-          <p>Camera</p>
-        </span>
-        <span style="display: flex; flex-direction: column; justify-content: center; align-items: center;" className=" flex flex-col justify-center items-center ">
-          <img src={mic} alt="" style="width: 24px; height: 24px;" className=" w-[24px] h-[24px]"/>
-          <p>Mic</p>
-        </span>
-        <span style="display: flex; flex-direction: column; justify-content: center; align-items: center;" className=" flex flex-col justify-center items-center ">
-          <img src={bin} alt="" style="width: 24px; height: 24px;" className=" w-[24px] h-[24px]"/>
-          
-        </span>
-      </div>
-    `;
+  button.appendChild(img);
+  const label = document.createElement("small");
+  label.style.fontWeight = "500";
+  label.style.fontSize = "0.75rem";
+  label.style.color = "#fff";
+  label.textContent = labelText;
+  controlItem.appendChild(button);
+  controlItem.appendChild(label);
+  return controlItem;
+}
 
-    popupElement.appendChild(containerDiv);
-
-    document.body.appendChild(popupElement);
+  barContainner.appendChild(barPropContainner);
 }
 
 function showPopup() {
-    if (popupElement) {
-        popupElement.style.display = "block";
+    if (barContainner) {
+        barContainner.style.display = "flex";
     }
 }
 
 function hidePopup() {
-    if (popupElement) {
-        popupElement.style.display = "none";
+    if (barContainner) {
+        barContainner.style.display = "none";
     }
 }
 function onAccessApproved(stream) {
@@ -128,3 +159,6 @@ chrome.runtime.onMessage.addListener( (message, sender, sendResponse)=>{
 })
 
 createPopup();
+
+
+
