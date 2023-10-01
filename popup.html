@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+<body>
+    <div className="w-[300px] h-[439px] shadow-2xl rounded-xl py-3 px-4 shadow-neutral-500">
+        <div class="flex flex-row justify-between header">
+          <div class="flex flex-row justify-center items-center header-top">
+            <img src="./static/logo.png" alt="Logo" class=" mr-2 header-top-img" />
+            <p>HelpMeOut</p>
+          </div>
+          <div class=" flex side-header">
+              <img
+              src="./static/setting.png"
+              alt="setting"
+              class=" w-[20px] h-[20px] mr-2 side-header-img"
+              />
+              <button id="stopvideo">
+            <img
+            src="./static/cancel.png"
+            alt="cancel"
+            class=" w-[20px] h-[20px] side-header-imgg"
+            />
+        </button>
+          </div>
+        </div>
+        <div className=" content-header">
+          <p>
+            This extension helps you record <br /> and share help videos with
+            ease.
+          </p>
+        </div>
+        <div class=" tab">
+          <div class=" flex flex-col justify-center items-center text-center tab-square">
+            <img src="./static/monitor.png" alt="monitor" class=" w-[32px] h-[32px] tab-square-img" />
+            <p class=" text-sm content-tab">Full Screen</p>
+          </div>
+          <div class=" flex flex-col justify-center items-center text-center">
+            <img src="./static/tablet.png" alt="tablet" class=" w-[32px] h-[32px] tab-square-imgg" />
+            <p class=" text-sm content-tab">Current Tab</p>
+          </div>
+        </div>
+        <div class="houserecord">
+          <div class="prefer-record-box">
+            <div class=" cam-flex flex ">
+              <img
+                src="./static/camera.png"
+                alt="Camera"
+                class=" w-[24px] h-[24px] pr-2 camera-img"
+              />
+              <p>Camera</p>
+            </div>
+            <span>
+              <img src="./static/togglebutton.png" alt="" />
+            </span>
+          </div>
+          <div class=" prefer-record-box">
+            <div class="cam-flex">
+              <img src="./static/audio.png" alt="audio" class=" h-[24px] camera-img" />
+              <p>Audio</p>
+            </div>
+            <span>
+              <img src="./static/togglebutton.png" alt="" />
+            </span>
+          </div>
+          <button class=" startrecord" id="start_video">Start Recording</button>
+        </div>
+      </div>
+      <!-- Add this to your HTML file -->
+
+    <script src="./popup.js"></script>
+</body>
+</html>

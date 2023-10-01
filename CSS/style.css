@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    width: 300px;
+    height: 439px;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+.header-top-img{
+    margin-right: 8px;
+}
+.side-header {
+    display: flex;
+
+}
+
+.side-header-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+.side-header-imgg{
+    width: 20px;
+    height: 20px;
+}
+.content-header {
+    width: 224px;
+    height: 32px;
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+    margin-top: 16px;
+}
+.tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 32px;
+}
+
+.tab-square {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+.tab-square-img {
+    width: 32px;
+    height: 32px;
+}
+
+.tab-square-imgg {
+    width: 32px;
+    height: 32px;
+}
+
+.cam-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-tab {
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+}
+
+.prefer-record-box {
+    margin-top: 1.25rem/* 20px */;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    /* border: 2; */
+    border-color: #120B48;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 1rem/* 16px */;
+    width: 252px;
+    height: 48px;
+}
+.camera-img {
+    width: 24px;
+    height: 24px;
+    padding-right: 8px;
+    
+}
+.startrecord {
+    background-color: #120B48;
+    font-size: 1rem/* 16px */;
+    line-height: 1.5rem/* 24px */;
+    width: 252px;
+    height: 51px;
+    border-radius: 1rem/* 16px */;
+    margin-top: 1.25rem/* 20px */;
+    color: white;
+}
+.houserecord {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
