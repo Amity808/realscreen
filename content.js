@@ -5,55 +5,53 @@ var popupElement = null;
 let barContainner
 function createPopup() {
     barContainner = document.createElement("div");
-barContainner.style.display = "none";
-barContainner.style.gap = "1rem";
-barContainner.style.alignItems = "center";
-barContainner.style.minWidth = "400px";
-barContainner.style.backgroundColor = "#141414";
-barContainner.style.borderRadius = "100vh";
-barContainner.style.paddingBlock = "0.5rem";
-barContainner.style.justifyContent = "space-evenly";
-barContainner.style.position = "fixed";
-barContainner.style.bottom = "5%";
-barContainner.style.left = "5%";
-let time = document.createElement("div");
-let timeP = document.createElement("p");
-let timeSpan = document.createElement("span");
-time.style.display = "flex";
-time.style.alignItems = "center";
-time.style.gap = "1rem";
-timeP.style.fontWeight = "500";
-timeP.style.fontSize = "1.25rem";
-timeP.style.fontFamily = "Inter";
-timeP.style.color = "#fff";
-timeP.textContent = "00:03:35";
-timeSpan.style.height = "8px";
-timeSpan.style.width = "8px";
-timeSpan.style.backgroundColor = "red";
-timeSpan.style.borderRadius = "50%";
-time.appendChild(timeP);
-time.appendChild(timeSpan);
-barContainner.appendChild(time);
-let barPropContainner = document.createElement("div");
-barPropContainner.style.display = "flex";
-barPropContainner.style.alignItems = "center";
-barPropContainner.style.gap = "1rem";
-barPropContainner.style.borderLeft = "1px solid #E8E8E8";
-barPropContainner.style.paddingLeft = "1rem";
-document.body.appendChild(barContainner);
-const controlItem1 = createControlItem("Pause", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166602/Icons/ae3ufl4s59dy7tvh0tsb.png");
-const controlItem2 = createControlItem("Stop", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166664/Icons/gj2gn1upqjimsgv2j8cz.png");
-const controlItem3 = createControlItem("Camera", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166781/Icons/cawunk9gdd9yfnnvlnei.png");
-barPropContainner.appendChild(controlItem1);
-barPropContainner.appendChild(controlItem2);
-barPropContainner.appendChild(controlItem3);
+    barContainner.style.display = "none";
+    barContainner.style.gap = "1rem";
+    barContainner.style.alignItems = "center";
+    barContainner.style.minWidth = "400px";
+    barContainner.style.backgroundColor = "#141414";
+    barContainner.style.borderRadius = "100vh";
+    barContainner.style.paddingBlock = "0.5rem";
+    barContainner.style.justifyContent = "space-evenly";
+    barContainner.style.position = "fixed";
+    barContainner.style.bottom = "5%";
+    barContainner.style.left = "5%";
+    let count = document.createElement("div");
+    let countP = document.createElement("p");
+    let countSpan = document.createElement("span");
+    count.style.display = "flex";
+    count.style.alignItems = "center";
+    count.style.gap = "1rem";
+    countP.style.fontWeight = "500";
+    countP.style.fontSize = "1.25rem";
+    countP.style.fontFamily = "Inter";
+    countP.style.color = "#fff";
+    countP.textContent = "00:03:35";
+    countSpan.style.height = "8px";
+    countSpan.style.width = "8px";
+    countSpan.style.backgroundColor = "red";
+    countSpan.style.borderRadius = "50%";
+    count.appendChild(countP);
+    count.appendChild(countSpan);
+    barContainner.appendChild(count);
+    let barPropContainner = document.createElement("div");
+    barPropContainner.style.display = "flex";
+    barPropContainner.style.alignItems = "center";
+    barPropContainner.style.gap = "1rem";
+    barPropContainner.style.borderLeft = "1px solid #E8E8E8";
+    barPropContainner.style.paddingLeft = "1rem";
+    document.body.appendChild(barContainner);
+    const controlItem1 = createControlItem("Pause", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166602/Icons/ae3ufl4s59dy7tvh0tsb.png");
+    const controlItem2 = createControlItem("Stop", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166664/Icons/gj2gn1upqjimsgv2j8cz.png");
+    const controlItem3 = createControlItem("Camera", "https://res.cloudinary.com/dzsomaq4z/image/upload/v1696166781/Icons/cawunk9gdd9yfnnvlnei.png");
+    barPropContainner.appendChild(controlItem1);
+    barPropContainner.appendChild(controlItem2);
+    barPropContainner.appendChild(controlItem3);
 function createControlItem(labelText, imgUrl) {
   const controlItem = document.createElement("div");
-  //   controlItem.className = "controlItem";
   controlItem.style.display = "flex";
   controlItem.style.alignItems = "center";
   controlItem.style.gap = ".3rem";
-  //   controlItem.style.paddingLeft = "1rem";
   controlItem.style.flexDirection = "column";
   const button = document.createElement("button");
   button.style.borderRadius = "50%";
@@ -127,7 +125,7 @@ function onAccessApproved(stream) {
 }
 
 
-chrome.runtime.onMessage.addListener( (message, sender, sendResponse)=>{
+chrome.runcount.onMessage.addListener( (message, sender, sendResponse)=>{
 
     if(message.action === "request_recording"){
         console.log("requesting recording")
